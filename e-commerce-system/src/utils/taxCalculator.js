@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.calculateTax = calculateTax;
-var taxRate;
-function calculateTax(product) {
-    if (product.category === "groceries") {
+let taxRate;
+export function calculateTax(category, price) {
+    if (category === "groceries") {
         taxRate = 3.00;
     }
     else {
         taxRate = 4.75;
     }
-    var pricewithTax = product.price * (1 + taxRate / 100);
+    let pricewithTax = price * (1 + taxRate / 100);
     return pricewithTax;
 }
+//# sourceMappingURL=taxCalculator.js.map

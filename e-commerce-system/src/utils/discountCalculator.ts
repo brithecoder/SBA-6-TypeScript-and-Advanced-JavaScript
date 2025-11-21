@@ -1,5 +1,5 @@
 
-import * as customeErrors from "../utils/errorHandler";
+import * as customeErrors from "../utils/errorHandler.js";
 export function discountCalculator(price: number, discountPercentage: number): number{
      if (price < 0 || discountPercentage < 0) {
         throw new customeErrors.DataError("Price and discount percentage must be non-negative.");

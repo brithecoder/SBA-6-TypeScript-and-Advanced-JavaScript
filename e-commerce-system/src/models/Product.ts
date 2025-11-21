@@ -1,13 +1,6 @@
-import { discountCalculator } from "../utils/discountCalculator";
+import { discountCalculator } from "../utils/discountCalculator.js";
+import { calculateTax } from "../utils/taxCalculator.js";
 
-export interface ProductData {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    category: string; // Assuming 'groceries' is a key category
-}
 
 export class Product {
   id: number;
@@ -16,8 +9,10 @@ export class Product {
   category: string;
   price: number;
   discountPercentage: number;
+  imageUrl: string;
+  
 
-  constructor(id: number, title: string, description:string, category: string,  price: number, discountPercentage: number){
+  constructor(id: number, title: string, description:string, category: string,  price: number, discountPercentage: number, imageUrl: string){
       
   this.id = id;
   this.title = title;
@@ -25,14 +20,23 @@ export class Product {
   this.category = category;
   this.price = price;
   this.discountPercentage = discountPercentage;
+  this.imageUrl = imageUrl;
   }
    displayDetails = (): string => {
-    return `${this.title} costs $${this.price}. The price with discount is $${this.getPriceWithDiscount()} and the ID is: ${this.id}.`;
+    return `👉 ${this.title} costs $${this.price}. The price with discount is $${this.getPriceWithDiscount()}. The price with discount and tax is $${this.getPriceWithDiscountPlusTax()}.`;
 }
+    displayDescription = (): string =>{
+        return `${this.description}`
+    }
     getPriceWithDiscount = (): number =>{
        const discountAmount: number = discountCalculator(this.price, this.discountPercentage);
          const finalPrice: number = this.price - discountAmount;
           return parseFloat(finalPrice.toFixed(2));
+    }
+    getPriceWithDiscountPlusTax = (): number =>{
+        const pricewithTax: number  = calculateTax(this.category, this.getPriceWithDiscount());
+        return parseFloat(pricewithTax.toFixed(2));
+        
     }
 
 }

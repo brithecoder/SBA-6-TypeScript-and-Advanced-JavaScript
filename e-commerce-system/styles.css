@@ -1,0 +1,27 @@
+#containerDiv{
+    background-color:#3a86ff;
+    text-align: center;
+    padding:20px;
+}
+#pageH1{
+    color: azure;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
+    padding:10px;
+    margin-top:0;
+    border:3px solid greenyellow;
+    border-radius: 12px;
+    background-color: #ff006eff;
+}
+
+#itemList{
+list-style: none;
+display: inline-block;
+padding-left: 0; 
+}
+.card-spacing{
+    margin-bottom: 10px;
+}
+.card-img-top{
+    width: 5%;
+}

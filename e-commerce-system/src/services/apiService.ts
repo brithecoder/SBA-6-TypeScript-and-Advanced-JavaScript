@@ -1,5 +1,5 @@
-import * as customeErrors from "../utils/errorHandler";
-import type { Product } from "../models/Product";
+import * as customeErrors from "../utils/errorHandler.js";
+import type { Product } from "../models/Product.js";
 
 
 interface RealApiResponse{
@@ -17,11 +17,10 @@ export async function fetchProducts(): Promise  <Product[]> {
       }
       const data: RealApiResponse = await res.json();
       console.log(`✅ Successfully fetched ${data.products.length} products.`);
+      // console.log(data.products);
       return data.products;
     }catch(e){
-     console.error( new customeErrors.DataError(`Could not get products: ${e}`));
-    }
-    throw Error;
-    
+      console.error( new customeErrors.DataError(`Could not get products: ${e}`));
+      throw Error
+    }  
 }
-fetchProducts();
